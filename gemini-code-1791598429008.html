@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walimatulurus Hanis & Hidayah</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #946b74;
+      --accent: #d8a7b1;
+      --bg-cream: #faf7f5;
+      --text-dark: #3a3235;
+      --text-muted: #6e6467;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #ede7e3;
+      color: var(--text-dark);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .card-container {
+      width: 100%;
+      max-width: 440px;
+      background: var(--bg-cream);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 50px;
+      text-align: center;
+    }
+
+    /* Floral Header Border */
+    .top-ornament {
+      height: 16px;
+      background: linear-gradient(90deg, #d8a7b1, #f4dcd6, #d8a7b1);
+    }
+
+    /* Music Float Button */
+    .music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      background: var(--white);
+      color: var(--primary);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .music-btn.playing {
+      animation: spin 5s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .content-wrap {
+      padding: 35px 24px;
+    }
+
+    .arabic-greeting {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--primary);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .title-sub {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .parents-section {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text-dark);
+      margin-bottom: 25px;
+    }
+
+    .parents-section strong {
+      font-weight: 600;
+      color: #2b2225;
+    }
+
+    .divider-flower {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin: 18px 0;
+    }
+
+    .invite-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .couple-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.2rem;
+      color: var(--primary);
+      margin: 10px 0 20px 0;
+      line-height: 1.2;
+    }
+
+    .event-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 24px 20px;
+      border: 1px solid rgba(216, 167, 177, 0.35);
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(148, 107, 116, 0.05);
+    }
+
+    .event-date {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .event-time {
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .venue-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .venue-address {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Buttons Section */
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 20px;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-maps {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-maps:hover {
+      background-color: #7d5962;
+    }
+
+    .btn-waze {
+      background-color: #33ccff;
+      color: var(--white);
+    }
+
+    .btn-waze:hover {
+      background-color: #1eb7e6;
+    }
+
+    .btn-calendar {
+      background-color: transparent;
+      border: 1.5px solid var(--accent);
+      color: var(--primary);
+    }
+
+    .btn-calendar:hover {
+      background-color: var(--accent);
+      color: var(--white);
+    }
+
+    .quote-box {
+      font-style: italic;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding: 0 10px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music Audio Player -->
+  <audio id="weddingMusic" loop preload="auto">
+    <!-- Pautan instrumental acoustic nasyid / Islamic minus one -->
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_c89e830e92.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Audio Play/Pause Button -->
+  <button class="music-btn" id="musicBtn" aria-label="Kawalan Muzik">
+    <i class="fa-solid fa-compact-disc" id="musicIcon"></i>
+  </button>
+
+  <div class="card-container">
+    <div class="top-ornament"></div>
+
+    <div class="content-wrap">
+      <div class="arabic-greeting">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+      <p class="title-sub">WALIMATULURUS</p>
+
+      <div class="parents-section">
+        <strong>ABDUL JAMAL BIN MAHASAN</strong><br>
+        <strong>NAHARIAH BINTI DERIS</strong>
+        <div class="divider-flower"><i class="fa-solid fa-leaf"></i> serta <i class="fa-solid fa-leaf"></i></div>
+        <strong>KHAIRUDDIN BIN OMAR</strong><br>
+        <strong>NUR ZAKKIAH BINTI OSMAN</strong>
+      </div>
+
+      <p class="invite-text">
+        Dengan setulus hati menjemput Dato' / Datin / Tuan / Puan / Encik / Cik serta keluarga ke majlis perkahwinan anakanda kami:
+      </p>
+
+      <div class="couple-name">Hanis & Hidayah</div>
+
+      <!-- Detail Card -->
+      <div class="event-card">
+        <div class="event-date">Ahad, 22 November 2026</div>
+        <div class="event-time">11:30 Pagi – 3:00 Petang</div>
+        <hr style="border: none; border-top: 1px dashed #e8d0d5; margin: 14px 0;">
+        <div class="venue-title">LAMAN KASIH</div>
+        <div class="venue-address">
+          Kampung Tempoyang, 27200 Kuala Lipis, Pahang
+        </div>
+      </div>
+
+      <!-- Action Navigation Buttons -->
+      <div class="button-group">
+        <a href="https://www.google.com/maps/search/?api=1&query=Laman+Kasih+Kampung+Tempoyang+27200+Kuala+Lipis+Pahang" target="_blank" class="btn-action btn-maps">
+          <i class="fa-solid fa-location-dot"></i> Buka Google Maps
+        </a>
+        <a href="https://waze.com/ul?q=Laman%20Kasih%20Kampung%20Tempoyang%20Kuala%20Lipis" target="_blank" class="btn-action btn-waze">
+          <i class="fa-brands fa-waze"></i> Pandu Menggunakan Waze
+        </a>
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Walimatulurus+Hanis+%26+Hidayah&dates=20261122T033000Z/20261122T070000Z&details=Walimatulurus+Hanis+%26+Hidayah+di+Laman+Kasih,+Kuala+Lipis&location=Laman+Kasih,+Kampung+Tempoyang,+27200+Kuala+Lipis,+Pahang" target="_blank" class="btn-action btn-calendar">
+          <i class="fa-regular fa-calendar-plus"></i> Simpan ke Google Calendar
+        </a>
+      </div>
+
+      <div class="quote-box">
+        "Semoga kehadiran dan doa restu para hadirin menyerikan lagi majlis kami serta diberkati Allah SWT Insya'Allah. Aamiin."
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const audio = document.getElementById('weddingMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+
+    function togglePlay() {
+      if (isPlaying) {
+        audio.pause();
+        musicBtn.classList.remove('playing');
+        isPlaying = false;
+      } else {
+        audio.play().then(() => {
+          musicBtn.classList.add('playing');
+          isPlaying = true;
+        }).catch(err => {
+          console.log("Audio play blocked by browser policy:", err);
+        });
+      }
+    }
+
+    musicBtn.addEventListener('click', togglePlay);
+
+    // Memulakan audio secara automatik pada sentuhan/klik pertama pengguna (patuh polisi pelayar)
+    document.addEventListener('click', function autoPlayOnce() {
+      if (!isPlaying) {
+        audio.play().then(() => {
+          musicBtn.classList.add('playing');
+          isPlaying = true;
+        }).catch(() => {});
+      }
+      document.removeEventListener('click', autoPlayOnce);
+    }, { once: true });
+  </script>
+</body>
+</html>
